@@ -59,7 +59,6 @@ def main():
         ap.add_argument("--file",    type=str,   default=None)
         ap.add_argument("--size",    type=int,   default=51200)
         ap.add_argument("--timeout", type=float, default=0.5)
-        ap.add_argument("--loss",    type=float, default=0.0)
         args = ap.parse_args()
 
         #Create UDP Socket
