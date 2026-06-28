@@ -1,0 +1,25 @@
+"""
+-------------------------------------------------------
+Assignment 02 BONUS, Selective Repeat (Option A)
+-------------------------------------------------------
+Author:  Group 30
+-------------------------------------------------------
+"""
+For the bonus task, we implemented Option A by adding a Selective Repeat reliable data transfer protocol using only one timer. 
+This was added through two new files:
+    sender_sr.py
+    receiver_sr.py
+
+Selective Repeat extends the original GBN design by allowing the receiver to accept and buffer packets that arrive out of order.
+Unlike GBN, where the receiver discards out of order packets and the sender may retransmit the entire window after a timeout, 
+the Selective Repeat sender maintains an 'acknowledged' dictionary to track individual packet acknowledgements and retransmits only 
+the oldest unacknowledged packet. The receiver stores out of order packets in a 'buffer' dictionary and writes them once all previous 
+packets have been successfully received. Through the use of the 'acknowledged' and 'buffer' dictionaries, along with the 'base' and 
+'expected_sequence' variables, the protocol was able to reliably manage packet loss - 'acknowledged', preserve packet ordering -
+'buffer' and 'expected_sequence', and avoid unnecessary retransmissions - 'base' and 'acknowledged'.
+
+During testing, an issue was encountered where the receiver could terminate the transfer before all buffered packets had been written.
+After multiple rounds of testing and verification, the receiver logic was modified to delay file closure until the END packet 
+had been received and all previous packets had been written successfully. Final testing under simulated packet loss 
+confirmed successful file transfer and identical sender and receiver files. Multiple test cases were performed using varying loss 
+rates and file sizes, confirming that the Selective Repeat implementation functioned correctly and reliably under all tested conditions.
