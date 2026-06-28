@@ -82,8 +82,8 @@ def main():
         #End
         send_stopwait(packet=create_packet(END_TYPE,total_packets+1, 0, b""), expected_ack=total_packets+1)
         total_time = time.time() - start_time
-        throughput = file_size/total_time/1000
-        print(f"""[Sender]: Send Successfully (Time:{total_time:.2f}s, Retransmissions:{retransmissions}, Throughput:{throughput:,.2f} mbps)""")
+        throughput = file_size/total_time
+        print(f"""[Sender]: Send Successfully (Time:{total_time:.2f}s, Retransmissions:{retransmissions}, Throughput:{throughput:,.2f} bps)""")
 
     except Exception as e:
         print(f"[Sender]: ERROR {str(e)}")

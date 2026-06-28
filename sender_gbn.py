@@ -111,8 +111,8 @@ def main():
         send_gbn(packets, final_seq, args.window, args.timeout)
         
         total_time = time.time() - start_time
-        throughput = file_size / total_time / 1000
-        print(f"""[Sender]: File Sent Successfully (Time:{total_time:.2f}s, Retransmissions:{retransmissions}, Throughput:{throughput:,.2f} mbps)""")
+        throughput = file_size / total_time
+        print(f"""[Sender]: File Sent Successfully (Time:{total_time:.2f}s, Retransmissions:{retransmissions}, Throughput:{throughput:,.2f} bps)""")
 
     except Exception as e:
         print(f"[Sender]: ERROR {str(e)}")
